@@ -12,18 +12,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/sin"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="50dp"
-            android:entries="@array/suffixArray"
-            android:spinnerMode="dropdown"
-            android:autofillHints="@string/suffix"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <ImageView
+                android:id="@+id/imageViewSin"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingLeft="10dp"
+                app:srcCompat="@drawable/flag" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/sinTextInputLayout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:errorEnabled="true"
+                app:helperTextEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sinTextInputEditText"
+                    android:layout_width="330dp"
+                    android:layout_height="match_parent"
+                    android:hint="Enter Full Name" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
 
         <LinearLayout
             android:id="@+id/Name"
@@ -35,7 +63,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner">
+            app:layout_constraintTop_toBottomOf="@+id/sin">
 
 
             <ImageView
@@ -266,7 +294,7 @@
                 android:paddingLeft="10dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_local_phone_black_24dp" />
+                app:srcCompat="@drawable/flag" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/PhoneTextInputLayout"
@@ -320,7 +348,7 @@
                 android:paddingLeft="10dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_date_range_black_24dp" />
+                app:srcCompat="@drawable/flag" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/DateTextInputLayout"
@@ -443,7 +471,7 @@
                 android:paddingLeft="10dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                app:srcCompat="@drawable/ic_description_black_24dp" />
+                app:srcCompat="@drawable/flag" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/DescriptionTextInputLayout"
