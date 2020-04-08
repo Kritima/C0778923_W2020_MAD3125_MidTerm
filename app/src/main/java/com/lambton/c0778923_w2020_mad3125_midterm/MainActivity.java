@@ -26,21 +26,11 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity {
 
     Button btnSubmit, btnClear;
-    TextInputEditText firstName;
-    TextInputEditText address;
-    TextInputEditText city;
-    TextInputEditText province;
-    TextInputEditText postalCode;
-    TextInputEditText email;
-    TextInputEditText phone;
-    TextInputEditText area;
-    TextInputEditText description;
-    TextInputEditText date;
+    TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution ;
     RadioGroup rgGender;
     RadioButton rbMale;
     RadioButton rbFemale;
     RadioButton rbOther;
-    CheckBox networkProblem, systemCrashing, slowInternet, softwareInstallation;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
 
@@ -49,37 +39,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        suffix = (Spinner) findViewById(R.id.spinner);
-        severity = (RatingBar) findViewById(R.id.rbFeedback);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        btnClear = (Button) findViewById(R.id.btnClear);
+        sin = (TextInputEditText) findViewById(R.id.sinTextInputEditText);
         firstName = (TextInputEditText) findViewById(R.id.firstNameTextInputEditText);
-        status = (RadioGroup) findViewById(R.id.radioGroup);
-        address = (TextInputEditText) findViewById(R.id.AddressTextInputEditText);
-        city = (TextInputEditText) findViewById(R.id.CityTextInputEditText);
-        province = (TextInputEditText) findViewById(R.id.ProvinceTextInputEditText);
-        postalCode = (TextInputEditText) findViewById(R.id.PostalCodeTextInputEditText);
-        email = (TextInputEditText) findViewById(R.id.EmailTextInputEditText);
-        phone = (TextInputEditText) findViewById(R.id.PhoneTextInputEditText);
-        area = (TextInputEditText) findViewById(R.id.AreaTextInputEditText);
-        description = (TextInputEditText) findViewById(R.id.DescriptionTextInputEditText);
-        date = (TextInputEditText) findViewById(R.id.DateTextInputEditText);
+        lastName = (TextInputEditText) findViewById(R.id.lastNameTextInputEditText);
+        birthDate = (TextInputEditText) findViewById(R.id.birthDateTextInputEditText);
+        grossIncome = (TextInputEditText) findViewById(R.id.grossIncomeTextInputEditText);
+        rrspContribution = (TextInputEditText) findViewById(R.id.rrspContributedTextInputEditText);
+        rgGender = (RadioGroup) findViewById(R.id.radioGroupGender);
         rbMale = (RadioButton) findViewById(R.id.radioButtonMale);
         rbFemale = (RadioButton) findViewById(R.id.radioButtonFemale);
         rbOther = (RadioButton) findViewById(R.id.radioButtonOther);
-        networkProblem = (CheckBox) findViewById(R.id.networkProblem);
-        systemCrashing = (CheckBox) findViewById(R.id.systemCrashing);
-        slowInternet = (CheckBox) findViewById(R.id.slowInternet);
-        softwareInstallation = (CheckBox) findViewById(R.id.softwareInstallation);
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnClear = (Button) findViewById(R.id.btnClear);
 
 
-        severity.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-
-            @Override
-            public void onRatingChanged(final RatingBar ratingBar, final float rating, final boolean fromUser) {
-                setCurrentRating(rating);
-            }
-        });
 
         date.setOnClickListener(new View.OnClickListener() {
             @Override
