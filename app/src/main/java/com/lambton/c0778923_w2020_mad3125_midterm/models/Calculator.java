@@ -14,14 +14,14 @@ public class Calculator {
         private static final double MAX_CPP_AMOUNT = 57400.0d;
         private static final double MAX_EI_AMOUNT = 53100.0d;
 
-        public static double calculateCPP(double d) {
-            if (d > MAX_CPP_AMOUNT) {
+        public static double calculateCPP(double a) {
+            if (a > MAX_CPP_AMOUNT) {
                 return DEFAULT_CPP_AMOUNT;
             }
             else
             {
 
-                 return (d * 5.1d) / 100.0d;
+                 return (a * 5.1d) / 100.0d;
             }
         }
 
@@ -45,13 +45,18 @@ public class Calculator {
             return String.valueOf(instance2.get(1) - instance.get(1));
         }
 
-        public static double performEI(double d) {
-            return d > MAX_EIAMOUNT ? EIAMOUNT_DEFAULT : ((double) Math.round(((d * 1.62d) / 100.0d) * 100.0d)) / 100.0d;
+        public static double calculateEI(double a) {
+            if (a > MAX_EI_AMOUNT) {
+                return DEFAULT_EI_AMOUNT;
+            } else {
+
+                return ((double) Math.round(((a * 1.62d) / 100.0d) * 100.0d)) / 100.0d;
+            }
         }
 
         public static double performProvinceTax(double d) {
             double d2;
-            double d3
+            double d3;
             double d4 = 0.0d;
             if (d > 10582.0d) {
                 double d5 = d - 10582.0d;

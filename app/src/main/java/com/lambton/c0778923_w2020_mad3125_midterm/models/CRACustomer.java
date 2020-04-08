@@ -96,7 +96,7 @@ public class CRACustomer {
         }
 
         public String getDob() {
-            return this.dob;
+            return dob;
         }
 
         public String getGender() {
@@ -120,7 +120,7 @@ public class CRACustomer {
         }
 
         public double getCPP() {
-            return TaxCalculator.performCPP(getGrossIncome());
+            return Calculator.calculateCPP(getGrossIncome());
         }
 
         public double getEI() {
