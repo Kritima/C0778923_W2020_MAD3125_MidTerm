@@ -73,14 +73,14 @@ public class CRACustomer {
             return "Total Taxable Income";
         }
 
-        public CRACustomer(String sin, String str2, String str3, String str4, String str5, double d, double d2) {
+        public CRACustomer(String sin, String fName, String lName, String dob, String gender, double grossIncome, double rrspContributed) {
             this.sin = sin;
-            this.fName = str2;
-            this.lName = str3;
-            this.dob = str4;
-            this.gender = str5;
-            this.grossIncome = d;
-            this.rrspContributed = d2;
+            this.fName = fName;
+            this.lName = lName;
+            this.dob = dob;
+            this.gender = gender;
+            this.grossIncome = grossIncome;
+            this.rrspContributed = rrspContributed;
         }
 
         public String getSin() {
@@ -89,9 +89,9 @@ public class CRACustomer {
 
         public String fullName() {
             StringBuilder sb = new StringBuilder();
-            sb.append(this.lName.toUpperCase());
+            sb.append(lName.toUpperCase());
             sb.append(", ");
-            sb.append(this.fName.toLowerCase());
+            sb.append(fName.toLowerCase());
             return sb.toString();
         }
 
@@ -159,4 +159,3 @@ public class CRACustomer {
     }
 
 
-}
