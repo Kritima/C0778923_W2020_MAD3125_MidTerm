@@ -19,6 +19,7 @@ import android.widget.RatingBar;
 import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     Button btnSubmit, btnClear;
     TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution ;
+    TextInputLayout sinLayout;
     RadioGroup rgGender;
     RadioButton rbMale;
     RadioButton rbFemale;
@@ -40,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         sin = (TextInputEditText) findViewById(R.id.sinTextInputEditText);
+        sinLayout = (TextInputLayout) findViewById(R.id.sinTextInputLayout);
         firstName = (TextInputEditText) findViewById(R.id.firstNameTextInputEditText);
         lastName = (TextInputEditText) findViewById(R.id.lastNameTextInputEditText);
         birthDate = (TextInputEditText) findViewById(R.id.birthDateTextInputEditText);
@@ -53,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         btnClear = (Button) findViewById(R.id.btnClear);
 
 
+        sinLayout.error = getString()
 
         birthDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +91,15 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                int selectedId = status.getCheckedRadioButtonId();
+                int selectedGender = rgGender.getCheckedRadioButtonId();
 
-                int n = 0;
+                String n = null;
                 int i = 0;
-                if (selectedId == R.id.radioButton) {
-                    n = 1;
-                } else if (selectedId == R.id.radioButton2) {
+                if (selectedGender == R.id.radioButtonMale) {
+                    n = "Male";
+                } else if (selectedGender == R.id.radioButton2) {
                     n = 2;
-                } else if (selectedId == R.id.radioButton3) {
+                } else if (selectedGender == R.id.radioButton3) {
                     n = 3;
                 }
 
@@ -104,7 +108,7 @@ public class MainActivity extends AppCompatActivity {
                         address.getText().toString(),
                         province.getText().toString(), city.getText().toString(), postalCode.getText().toString(), email.getText().toString(),
                         area.getText().toString(), phone.getText().toString(), date.getText().toString(), getIssues(), description.getText().toString(), severity.getRating());
-                Intent intent = new Intent(FirstActivity.this, SecondActivity.class);
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
                 intent.putExtra("sampleObject", c);
                 startActivity(intent);
 
@@ -115,42 +119,4 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setCurrentRating(float rating) {
-        LayerDrawable stars = (LayerDrawable)severity.getProgressDrawable();
-        switch (Math.round(rating)) {
-            case 1:
-                stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.cyan), PorterDuff.Mode.SRC_ATOP);
-                break;
-            case 2:
-                stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.green), PorterDuff.Mode.SRC_ATOP);
-                break;
-            case 3:
-                stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.yellow), PorterDuff.Mode.SRC_ATOP);
-                break;
-            case 4:
-                stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.orange), PorterDuff.Mode.SRC_ATOP);
-                break;
-            case 5:
-                stars.getDrawable(2).setColorFilter(getResources().getColor(R.color.red), PorterDuff.Mode.SRC_ATOP);
-                break;
-        }
-
-    }
-
-    private ArrayList<String> getIssues(){
-        ArrayList<String> issueList= new ArrayList<>();
-        if(networkProblem.isChecked()){
-            issueList.add("Network Problem");
-        }
-        if(systemCrashing.isChecked()){
-            issueList.add("System Crashing");
-        }
-        if(slowInternet.isChecked()){
-            issueList.add("Slow Internet");
-        }
-        if(softwareInstallation.isChecked()){
-            issueList.add("Software Installation");
-        }
-        return issueList;
-    }
 }
