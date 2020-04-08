@@ -25,9 +25,8 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button submit, clear;
-    Spinner suffix;
-    TextInputEditText fullname;
+    Button btnSubmit, btnClear;
+    TextInputEditText firstName;
     TextInputEditText address;
     TextInputEditText city;
     TextInputEditText province;
@@ -37,11 +36,10 @@ public class MainActivity extends AppCompatActivity {
     TextInputEditText area;
     TextInputEditText description;
     TextInputEditText date;
-    Spinner designation;
-    RadioGroup status;
-    RadioButton radiobutton1;
-    RadioButton radiobutton2;
-    RadioButton radiobutton3;
+    RadioGroup rgGender;
+    RadioButton rbMale;
+    RadioButton rbFemale;
+    RadioButton rbOther;
     CheckBox networkProblem, systemCrashing, slowInternet, softwareInstallation;
     DatePickerDialog.OnDateSetListener mDateSetListener;
 
@@ -53,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         suffix = (Spinner) findViewById(R.id.spinner);
         severity = (RatingBar) findViewById(R.id.rbFeedback);
-        submit = (Button) findViewById(R.id.btnSubmit);
-        clear = (Button) findViewById(R.id.btnClear);
-        fullname = (TextInputEditText) findViewById(R.id.NameTextInputEditText);
+        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnClear = (Button) findViewById(R.id.btnClear);
+        firstName = (TextInputEditText) findViewById(R.id.firstNameTextInputEditText);
         status = (RadioGroup) findViewById(R.id.radioGroup);
         address = (TextInputEditText) findViewById(R.id.AddressTextInputEditText);
         city = (TextInputEditText) findViewById(R.id.CityTextInputEditText);
@@ -66,10 +64,9 @@ public class MainActivity extends AppCompatActivity {
         area = (TextInputEditText) findViewById(R.id.AreaTextInputEditText);
         description = (TextInputEditText) findViewById(R.id.DescriptionTextInputEditText);
         date = (TextInputEditText) findViewById(R.id.DateTextInputEditText);
-        designation = (Spinner) findViewById(R.id.spinner2);
-        radiobutton1 = (RadioButton) findViewById(R.id.radioButton);
-        radiobutton2 = (RadioButton) findViewById(R.id.radioButton2);
-        radiobutton3 = (RadioButton) findViewById(R.id.radioButton3);
+        rbMale = (RadioButton) findViewById(R.id.radioButtonMale);
+        rbFemale = (RadioButton) findViewById(R.id.radioButtonFemale);
+        rbOther = (RadioButton) findViewById(R.id.radioButtonOther);
         networkProblem = (CheckBox) findViewById(R.id.networkProblem);
         systemCrashing = (CheckBox) findViewById(R.id.systemCrashing);
         slowInternet = (CheckBox) findViewById(R.id.slowInternet);
