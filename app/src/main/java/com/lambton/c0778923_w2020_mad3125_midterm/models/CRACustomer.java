@@ -107,8 +107,17 @@ public class CRACustomer {
         return grossIncome;
     }
 
+    public double getRrspContributed() {
+        return this.rrspContributed;
+    }
+
+    
+
 
 
 }
+
+
+
 
 
