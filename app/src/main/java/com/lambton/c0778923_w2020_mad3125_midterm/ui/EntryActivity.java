@@ -76,7 +76,6 @@ public class EntryActivity extends AppCompatActivity {
                 int selectedGender = rgGender.getCheckedRadioButtonId();
 
                 String d5 = null;
-                int i = 0;
                 if (selectedGender == R.id.radioButtonMale) {
                     d5 = "Male";
                 } else if (selectedGender == R.id.radioButtonFemale) {
@@ -102,13 +101,12 @@ public class EntryActivity extends AppCompatActivity {
                 } else if (d4.trim().isEmpty()) {
                     showAlert("Please enter Date of birth");
                 }
-                else if (checkEligibleDob())
+                else if (checkEligibleBirthDate())
                  {
-                 birthDate.setError("Grow up First. Then File Tax");
+                 birthDate.setError("");
                  birthDate.setText("Not eligible to file tax for current year 2019".toUpperCase());
                  birthDate.setTextColor(Color.RED);
-                 btnCalculate.setVisibility(View.GONE);
-                     birthDate.setEnabled(false);
+                 disableFields();
                  }
                 else if (d6.trim().isEmpty()) {
                     showAlert("Please Enter Gross Income");
@@ -130,26 +128,22 @@ public class EntryActivity extends AppCompatActivity {
 
         public void openDatePicker() {
             Calendar instance = Calendar.getInstance();
-            int i = instance.get(Calendar.DAY_OF_MONTH);
+            int month = instance.get(Calendar.DAY_OF_MONTH);
             int i2 = instance.get(Calendar.MONTH);
             DatePickerDialog datePickerDialog2 = new DatePickerDialog(this, new OnDateSetListener() {
-                public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
+                public void onDateSet(DatePicker datePicker, int i, int i2, int month) {
                     Calendar instance = Calendar.getInstance();
-                    instance.set(i, i2, i3);
+                    instance.set(i, i2, month);
                     EntryActivity.this.birthDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(instance.getTime()).toUpperCase());
                 }
-            }, instance.get(Calendar.YEAR), i2, i);
+            }, instance.get(Calendar.YEAR), i2, month);
             this.datePickerDialog = datePickerDialog2;
             datePickerDialog2.getDatePicker().setMaxDate(new Date().getTime());
             this.datePickerDialog.show();
         }
 
-    public boolean checkEligibleDob() {
+    public boolean checkEligibleBirthDate() {
         int parseInt = Integer.parseInt(Calculator.getAge(this.birthDate.getText().toString()));
-       // StringBuilder sb = new StringBuilder();
-       // sb.append("Age: ");
-       // sb.append(parseInt);
-       // textView.setText(sb.toString());
         if (parseInt < 18) {
             return true;
         }
@@ -173,35 +167,22 @@ public class EntryActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+    private void disableFields ()
+    {
+        btnCalculate.setVisibility(View.GONE);
+        sin.setEnabled(false);
+        firstName.setEnabled(false);
+        lastName.setEnabled(false);
+        birthDate.setEnabled(false);
+        rgGender.setEnabled(false);
+        grossIncome.setEnabled(false);
+        rrspContribution.setEnabled(false);
+    }
+
+
+
 }
 
-
-
-   /* private void initViews() {
-        this.txtBirthDate.setInputType(0);
-        this.birthLayout = (TextInputLayout) findViewById(C0605R.C0608id.textInputLayout4);
-        this.txtAge = (TextView) findViewById(C0605R.C0608id.txtAge);
-        this.txtBirthDate.setOnFocusChangeListener(new OnFocusChangeListener() {
-            public void onFocusChange(View view, boolean z) {
-                if (z) {
-                    DetailEntryActivity.this.closeKeyboard();
-                    DetailEntryActivity.this.openDatePicker();
-                    return;
-                }
-                DetailEntryActivity.this.checkEligibleDob();
-            }
-        });
-        this.txtBirthDate.setOnClickListener(new OnClickListener() {
-            public void onClick(View view) {
-                DetailEntryActivity.this.openDatePicker();
-            }
-        });
-        this.btnCalculate.setOnClickListener(new OnClickListener() {
-            public void onClick(View view) {
-                DetailEntryActivity.this.calculateButtonClicked();
-            }
-        });
-    }*/
 
 
 
