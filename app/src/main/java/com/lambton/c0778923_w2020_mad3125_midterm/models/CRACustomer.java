@@ -119,6 +119,44 @@ public class CRACustomer {
         return new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime()).toUpperCase();
     }
 
+    public double getCPP() {
+        return Calculator.calculateCPP(getGrossIncome());
+    }
+
+    public double getEI() {
+        return Calculator.calculateEI(getGrossIncome());
+    }
+
+    public double getRemainingRSSP() {
+        return getMaxRRSP() - getRrspContributed();
+    }
+
+    public double getTotalTaxableAmount() {
+        double cpp = getCPP();
+        double ei = getEI();
+        double rrspContributed2 = getRrspContributed();
+        if (rrspContributed2 > getMaxRRSP()) {
+            rrspContributed2 = getMaxRRSP();
+        }
+        return ((double) Math.round((getGrossIncome() - ((cpp + ei) + rrspContributed2)) * 100.0d)) / 100.0d;
+    }
+
+    public double getProviceTax() {
+        return Calculator.calculateProvinceTax(getTotalTaxableAmount());
+    }
+
+    public double getFedralTax() {
+        return Calculator.calculateFedralTax(getTotalTaxableAmount());
+    }
+
+    public double getTotalTax() {
+        return ((double) Math.round((getProviceTax() + getFedralTax()) * 100.0d)) / 100.0d;
+    }
+
+    public double getMaxRRSP() {
+        return (this.grossIncome * 18.0d) / 100.0d;
+    }
+
 
 }
 
