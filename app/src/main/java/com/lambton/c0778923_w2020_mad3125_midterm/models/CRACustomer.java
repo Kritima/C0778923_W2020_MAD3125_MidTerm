@@ -1,9 +1,10 @@
 package com.lambton.c0778923_w2020_mad3125_midterm.models;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class CRACustomer {
+public class CRACustomer implements Serializable {
 
     private String sin;
     private String fName;

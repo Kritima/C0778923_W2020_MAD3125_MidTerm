@@ -19,10 +19,12 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.lambton.c0778923_w2020_mad3125_midterm.models.CRACustomer;
+import com.lambton.c0778923_w2020_mad3125_midterm.models.Calculator;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,7 +33,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Button btnCalculate;
-    TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution ;
+    TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution;
     TextInputLayout sinLayout;
     RadioGroup rgGender;
     RadioButton rbMale;
@@ -57,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
         rbFemale = (RadioButton) findViewById(R.id.radioButtonFemale);
         rbOther = (RadioButton) findViewById(R.id.radioButtonOther);
         btnCalculate = (Button) findViewById(R.id.btnSubmit);
-
 
 
         birthDate.setOnClickListener(new View.OnClickListener() {
@@ -116,67 +117,68 @@ public class MainActivity extends AppCompatActivity {
 
                 checkEligibleDob();
 
-                if (d1.length() != 9)
-                {
+                if (d1.length() != 9) {
                     showAlert("SIN Should be of 9 digits.");
-                }
-                else if (d2.isEmpty())
-                {
+                } else if (d2.isEmpty()) {
                     showAlert("Please Enter First Name");
-                }
-                else if (d3.isEmpty())
-                {
+                } else if (d3.isEmpty()) {
                     showAlert("Please Enter Last name");
-                }
-                else if (d4.trim().isEmpty())
-                {
+                } else if (d4.trim().isEmpty()) {
                     showAlert("Please enter Date of birth");
                 }
                 else if (this.birthLayout.getError() != null)
                 {
                     showAlert(this.birthLayout.getError().toString());
                 }
-                else if (d6.trim().isEmpty())
-                {
+                else if (d6.trim().isEmpty()) {
                     showAlert("Please Enter Gross Income");
-                }
-                else if (d7.trim().isEmpty())
-                {
+                } else if (d7.trim().isEmpty()) {
                     showAlert("Please Enter RRSP contribution");
-                }
-                else {
-                    CRACustomer cRACustomer = new CRACustomer(d1, d2, d3, d4, charSequence,
-                            Double.parseDouble(d6), Double.parseDouble(obj6));
-                    DataManager.addNewCustomer(cRACustomer);
-                    List details = DetailCustomer.getDetails(cRACustomer);
-                    Intent intent = new Intent(this, ShowDetailActivity.class);
-                    intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList) details);
+                } else {
+                    CRACustomer craCustomer = new CRACustomer(d1, d2, d3, d4, d5,
+                            Double.parseDouble(d6), Double.parseDouble(d7));
+                    Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
+                    intent.putExtra("sampleObject", craCustomer);
                     startActivity(intent);
+
                 }
             }
-
-            }
-
 
         });
 
     }
 
-    private void showAlert(String str) {
-        Builder builder = new Builder(this);
-        builder.setTitle((CharSequence) "Alert!");
-        builder.setMessage((CharSequence) str);
-       // builder.setIcon((int) C0605R.C0607drawable.ic_action_alert);
-        builder.setPositiveButton((CharSequence) "OK", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
+        public void checkEligibleDob () {
+            int parseInt = Integer.parseInt(Calculator.getAge(this.txtBirthDate.getText().toString()));
+            TextView textView = this.txtAge;
+            StringBuilder sb = new StringBuilder();
+            sb.append("Age: ");
+            sb.append(parseInt);
+            textView.setText(sb.toString());
+            if (parseInt < 18) {
+                this.birthLayout.setError(ERROR_MESSAGE.toUpperCase());
+            } else {
+                this.birthLayout.setError(null);
             }
-        });
-        builder.setNegativeButton((CharSequence) "Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        builder.create().show();
+        }
+
+        private void showAlert (String str){
+            Builder builder = new Builder(this);
+            builder.setTitle((CharSequence) "Alert!");
+            builder.setMessage((CharSequence) str);
+            // builder.setIcon((int) C0605R.C0607drawable.ic_action_alert);
+            builder.setPositiveButton((CharSequence) "OK", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                }
+            });
+            builder.setNegativeButton((CharSequence) "Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                }
+            });
+            builder.create().show();
+        }
+
     }
 
 }
@@ -248,56 +250,8 @@ public class MainActivity extends AppCompatActivity {
         ((InputMethodManager) getSystemService("input_method")).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 2);
     }
 
-    /* access modifiers changed from: private */
-    public void calculateButtonClicked() {
-        String obj = this.txtSIN.getText().toString();
-        String obj2 = this.txtFName.getText().toString();
-        String obj3 = this.txtLName.getText().toString();
-        String obj4 = this.txtBirthDate.getText().toString();
-        RadioButton radioButton = (RadioButton) findViewById(this.radioGroup.getCheckedRadioButtonId());
-        this.genderButton = radioButton;
-        String charSequence = radioButton.getText().toString();
-        String obj5 = this.txtGrossIncome.getText().toString();
-        String obj6 = this.txtRRSP.getText().toString();
-        checkEligibleDob();
-        if (obj.trim().length() != 9) {
-            showAlert("SIN Should be of 9 digits.");
-        } else if (obj2.trim().isEmpty()) {
-            showAlert("Please enter First name");
-        } else if (obj3.trim().isEmpty()) {
-            showAlert("Please enter Last name");
-        } else if (obj4.trim().isEmpty()) {
-            showAlert("Please enter Date of birth");
-        } else if (this.birthLayout.getError() != null) {
-            showAlert(this.birthLayout.getError().toString());
-        } else if (obj5.trim().isEmpty()) {
-            showAlert("Please enter Gross Income");
-        } else if (obj6.trim().isEmpty()) {
-            showAlert("Please enter RRSP contribution");
-        } else {
-            CRACustomer cRACustomer = new CRACustomer(obj, obj2, obj3, obj4, charSequence, Double.parseDouble(obj5), Double.parseDouble(obj6));
-            DataManager.addNewCustomer(cRACustomer);
-            List details = DetailCustomer.getDetails(cRACustomer);
-            Intent intent = new Intent(this, ShowDetailActivity.class);
-            intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList) details);
-            startActivity(intent);
-        }
-    }
 
     /* access modifiers changed from: private */
-    public void checkEligibleDob() {
-        int parseInt = Integer.parseInt(TaxCalculator.getAge(this.txtBirthDate.getText().toString()));
-        TextView textView = this.txtAge;
-        StringBuilder sb = new StringBuilder();
-        sb.append("Age: ");
-        sb.append(parseInt);
-        textView.setText(sb.toString());
-        if (parseInt < 18) {
-            this.birthLayout.setError(ERROR_MESSAGE.toUpperCase());
-        } else {
-            this.birthLayout.setError(null);
-        }
-    }
 
 
 }
