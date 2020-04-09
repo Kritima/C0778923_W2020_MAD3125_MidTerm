@@ -94,41 +94,57 @@ public class Calculator {
             return ((double) Math.round(a4 * 100.0d)) / 100.0d;
         }
 
-        public static double calculateFedralTax(double d) {
-            double d2;
-            double d3 = 0.0d;
-            if (d > 12069.0d) {
-                double d4 = d - 12069.0d;
-                if (d4 > 47630.0d) {
-                    double d5 = 5334.0d;
-                    double d6 = d4 - 35561.0d;
-                    if (d6 > 95259.0d) {
-                        d5 = 15097.94d;
-                        d6 -= 47628.99d;
-                        if (d6 > 147667.0d) {
-                            d5 = 28724.02d;
-                            d6 -= 52407.99d;
-                            if (d6 > 210371.0d) {
-                                d3 = 46908.18d;
-                                double d7 = d6 - 62703.99d;
-                                if (d7 > 210371.01d) {
-                                    d3 = 46908.18d + ((d7 * 33.0d) / 100.0d);
+        public static double calculateFedralTax(double a) {
+            double a2;
+            double a3 = 0.0d;
+            if (a > 12069.0d)
+            {
+                double a4 = a - 12069.0d;
+                if (a4 > 47630.0d)
+                {
+                    double a5 = 5334.0d;
+                    double a6 = a4 - 35561.0d;
+                    if (a6 > 95259.0d)
+                    {
+                        a5 = 15097.94d;
+                        a6 -= 47628.99d;
+
+                        if (a6 > 147667.0d)
+                        {
+                            a5 = 28724.02d;
+                            a6 -= 52407.99d;
+                            if (a6 > 210371.0d)
+                            {
+                                a3 = 46908.18d;
+                                double a7 = a6 - 62703.99d;
+
+                                if (a7 > 210371.01d)
+                                {
+                                    a3 = 46908.18d + ((a7 * 33.0d) / 100.0d);
                                 }
-                            } else {
-                                d2 = 29.0d;
                             }
-                        } else {
-                            d2 = 26.0d;
+                            else
+                                {
+                                a2 = 29.0d;
+                            }
                         }
-                    } else {
-                        d2 = 20.5d;
+                        else
+                            {
+                            a2 = 26.0d;
+                        }
                     }
-                    d3 = d5 + ((d6 * d2) / 100.0d);
-                } else {
-                    d3 = 0.0d + ((d4 * 15.0d) / 100.0d);
+                    else
+                        {
+                        a2 = 20.5d;
+                    }
+                    a3 = a5 + ((a6 * a2) / 100.0d);
+                }
+                else
+                    {
+                    a3 = 0.0d + ((a4 * 15.0d) / 100.0d);
                 }
             }
-            return ((double) Math.round(d3 * 100.0d)) / 100.0d;
+            return ((double) Math.round(a3 * 100.0d)) / 100.0d;
         }
 
         public static String getFormattedCurrency(double c) {
