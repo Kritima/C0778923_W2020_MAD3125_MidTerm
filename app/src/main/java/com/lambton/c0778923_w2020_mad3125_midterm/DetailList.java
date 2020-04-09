@@ -6,4 +6,11 @@ public class DetailList implements Serializable {
 
     private String name;
     private String value;
+
+    public DetailList(String name, String value) {
+        this.name = name;
+        this.value = value;
+    }
+
+    
 }
