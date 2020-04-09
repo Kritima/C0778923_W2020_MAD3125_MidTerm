@@ -58,36 +58,50 @@ public class Calculator {
             double a2;
             double a3;
             double a4 = 0.0d;
-            if (a > 10582.0d) {
+            if (a > 10582.0d)
+            {
                 double a5 = a - 10582.0d;
-                if (a5 > 43906.0d) {
+                if (a5 > 43906.0d)
+                {
                     double a6 = 1682.86d;
                     double a7 = a5 - 33323.99d;
-                    if (a7 > 87813.0d) {
+                    if (a7 > 87813.0d)
+                    {
                         a6 = 5700.349999999999d;
                         a7 -= 43906.99d;
-                        if (a7 > 150000.0d) {
+                        if (a7 > 150000.0d)
+                        {
                             a6 = 12640.419999999998d;
                             double a8 = a7 - 62186.99d;
-                            if (a8 > 220000.0d) {
+                            if (a8 > 220000.0d)
+                            {
                                 a4 = 21152.42d;
                                 double a9 = a8 - 69999.99d;
-                                if (a9 > 220000.01d) {
+                                if (a9 > 220000.01d)
+                                {
                                     a4 = 21152.42d + ((a9 * 12.16d) / 100.0d);
                                 }
-                            } else {
+                            }
+                            else
+                                {
                                 a2 = a8 * 12.16d;
                                 a4 = a6 + (a2 / 100.0d);
                             }
-                        } else {
+                        }
+                        else
+                            {
                             a3 = 11.16d;
                         }
-                    } else {
+                    }
+                    else
+                        {
                         a3 = 9.15d;
                     }
                     a2 = a7 * a3;
                     a4 = a6 + (a2 / 100.0d);
-                } else {
+                }
+                else
+                    {
                     a4 = 0.0d + ((a5 * 5.05d) / 100.0d);
                 }
             }
