@@ -115,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
                 String d6 = grossIncome.getText().toString();
                 String d7 = rrspContribution.getText().toString();
 
-                checkEligibleDob();
+               // checkEligibleDob();
 
                 if (d1.length() != 9) {
                     showAlert("SIN Should be of 9 digits.");
@@ -126,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
                 } else if (d4.trim().isEmpty()) {
                     showAlert("Please enter Date of birth");
                 }
-                else if (this.birthLayout.getError() != null)
-                {
-                    showAlert(this.birthLayout.getError().toString());
-                }
+                //else if (this.birthLayout.getError() != null)
+               // {
+                  // showAlert(this.birthLayout.getError().toString());
+               // }
                 else if (d6.trim().isEmpty()) {
                     showAlert("Please Enter Gross Income");
                 } else if (d7.trim().isEmpty()) {
@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-        public void checkEligibleDob () {
+        /*public void checkEligibleDob () {
             int parseInt = Integer.parseInt(Calculator.getAge(this.txtBirthDate.getText().toString()));
             TextView textView = this.txtAge;
             StringBuilder sb = new StringBuilder();
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 this.birthLayout.setError(null);
             }
-        }
+        }*/
 
         private void showAlert (String str){
             Builder builder = new Builder(this);
@@ -181,9 +181,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-}
-
-    private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
+   /* private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
     public static final String INTENT_KEY = "details";
     private TextInputLayout birthLayout;
     private Button btnCalculate;
@@ -194,7 +192,7 @@ public class MainActivity extends AppCompatActivity {
     /* access modifiers changed from: private */
 
 
-    private void initViews() {
+   /* private void initViews() {
         this.txtSIN = (TextInputEditText) findViewById(C0605R.C0608id.txtSin);
         this.txtFName = (TextInputEditText) findViewById(C0605R.C0608id.txtFName);
         this.txtLName = (TextInputEditText) findViewById(C0605R.C0608id.txtLName);
@@ -226,10 +224,10 @@ public class MainActivity extends AppCompatActivity {
                 DetailEntryActivity.this.calculateButtonClicked();
             }
         });
-    }
+    }*/
 
     /* access modifiers changed from: private */
-    public void openDatePicker() {
+    /*public void openDatePicker() {
         Calendar instance = Calendar.getInstance();
         int i = instance.get(5);
         int i2 = instance.get(2);
@@ -246,7 +244,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /* access modifiers changed from: private */
-    public void closeKeyboard() {
+   /* public void closeKeyboard() {
         ((InputMethodManager) getSystemService("input_method")).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 2);
     }
 
@@ -254,4 +252,3 @@ public class MainActivity extends AppCompatActivity {
     /* access modifiers changed from: private */
 
 
-}

@@ -26,9 +26,9 @@ public class DetailsActivity extends AppCompatActivity {
         rvDetailsList = findViewById(R.id.recyclerviewDetails);
         populateList();
 
-        attractionAdapter = new AttractionAdapter(attractions);
-        rvCountryList.setLayoutManager(new LinearLayoutManager(this));
-        rvCountryList.setAdapter(attractionAdapter);
+        detailAdapter = new DetailAdapter(detailListArrayList);
+        rvDetailsList.setLayoutManager(new LinearLayoutManager(this));
+        rvDetailsList.setAdapter(detailAdapter);
 
     }
 
@@ -37,6 +37,7 @@ public class DetailsActivity extends AppCompatActivity {
         Intent i = getIntent();
         CRACustomer c = (CRACustomer) i.getSerializableExtra("sampleObject");
 
-        detailListArrayList.add(new DetailList("Provider Sin Number",c.getSin() ));
+        detailListArrayList.add(new DetailList(c.sinKey(),c.getSin() ));
+        detailListArrayList.add(new DetailList(c.fullNameKey(),c.fullName() ));
     }
 }
