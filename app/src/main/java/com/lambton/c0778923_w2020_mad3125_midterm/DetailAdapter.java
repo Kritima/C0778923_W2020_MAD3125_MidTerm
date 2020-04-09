@@ -33,16 +33,16 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
         }
 
         @Override
-        public void onBindViewHolder(@NonNull final AttractionViewHolder holder, final int position) {
+        public void onBindViewHolder(@NonNull final DetailViewHolder holder, final int position) {
 
-            CanadaAttraction canadaAttraction = this.attractionArrayList.get(position);
-            holder.txtName.setText(canadaAttraction.getName());
-            holder.imgFlag.setImageResource(canadaAttraction.getThumbnail());
+            DetailList detailList = this.detailListArrayList.get(position);
+            holder.txtName.setText(detailList.getName());
+            holder.txtValue.setText(detailList.getValue());
 
-            holder.itemView.setOnClickListener(new View.OnClickListener() {
+            /*holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CanadaAttraction ca = attractionArrayList.get(position);
+                    DetailList dl = detailListArrayList.get(position);
                     Intent intent = new Intent(holder.itemView.getContext(), AttractionDetailsActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("attractionsKey", ca);
@@ -50,7 +50,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
                     holder.itemView.getContext().startActivity(intent);
 
                 }
-            });
+            });*/
 
         }
 
@@ -73,4 +73,4 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             }
         }
     }
-}
+
