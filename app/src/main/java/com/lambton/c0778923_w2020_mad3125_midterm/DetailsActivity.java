@@ -22,8 +22,6 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        Intent i = getIntent();
-        CRACustomer c = (CRACustomer) i.getSerializableExtra("sampleObject");
 
         rvDetailsList = findViewById(R.id.recyclerviewDetails);
         populateList();
@@ -32,5 +30,13 @@ public class DetailsActivity extends AppCompatActivity {
         rvCountryList.setLayoutManager(new LinearLayoutManager(this));
         rvCountryList.setAdapter(attractionAdapter);
 
+    }
+
+    private void populateList() {
+        detailListArrayList = new ArrayList<>();
+        Intent i = getIntent();
+        CRACustomer c = (CRACustomer) i.getSerializableExtra("sampleObject");
+
+        detailListArrayList.add(new DetailList("Provider Sin Number",c.getSin() ));
     }
 }
