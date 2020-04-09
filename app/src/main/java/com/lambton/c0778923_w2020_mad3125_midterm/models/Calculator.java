@@ -108,7 +108,7 @@ public class Calculator {
         }
 
         public static double calculateFedralTax(double a) {
-            double a2;
+            double a2 = 1;
             double a3 = 0.0d;
             if (a > 12069.0d)
             {
