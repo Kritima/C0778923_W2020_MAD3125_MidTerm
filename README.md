@@ -6,13 +6,12 @@
 Kritima Kukreja (C0778923)
 
 ## PROJECT DESCRIPTION
-[![Demo Doccou alpha](http://share.gifyoutube.com/KzB6Gb.gif)]
 An app that calculates the total bills of a customer. A bill could be for the internet, hydro or mobile usage. A customer may have multiple bills. Implement proper login/logout, display a list of customers, add new customers, data access and storage with singleton class, validations, display errors and alerts, display basic customer information. Adding additional bills. Picker/Segment view for bill types. Proper total calculation, proper validations.
 
 ## PROJECT OUTPUT
 Screenshot | Description
 --- | ---
-<img src="https://i93.servimg.com/u/f93/18/45/29/87/login14.png" alt="loginScreen"/> | Login screen for the app. Added validations. Added toggle hide password. Added Remember me. 'Sign up' button goes to add customer view controller.
+<img src="[![Demo Doccou alpha](http://share.gifyoutube.com/KzB6Gb.gif)]" alt="loginScreen"/> | Login screen for the app. Added validations. Added toggle hide password. Added Remember me. 'Sign up' button goes to add customer view controller.
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/custom13.png" alt="customerScreen"/> | List of customers. Logout button and new customer button added.
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/custom10.jpg" alt="customerDetailsScreen"/> | Detailed view of a single customer. Clicking on a bill moves to a detailed view of the bill. New bill button move to a screen to add a new bill.
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/billde10.png" alt="BillScreen"/> | View of bill. Contains bill amounts. 
