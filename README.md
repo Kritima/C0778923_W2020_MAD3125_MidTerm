@@ -6,7 +6,7 @@
 Kritima Kukreja (C0778923)
 
 ## PROJECT DESCRIPTION
-An app that calculates the total bills of a customer. A bill could be for the internet, hydro or mobile usage. A customer may have multiple bills. Implement proper login/logout, display a list of customers, add new customers, data access and storage with singleton class, validations, display errors and alerts, display basic customer information. Adding additional bills. Picker/Segment view for bill types. Proper total calculation, proper validations.
+An app that calculates the tax for the customer. The customer enters his/her asked deatils. Proper tax calculations, proper validations are done. Displays basic customer information and tax related information on a new screen. Date Picker for birth date.
 
 ## PROJECT OUTPUT
 Screenshot | Description
