@@ -115,16 +115,21 @@ public class EntryActivity extends AppCompatActivity {
                     firstName.setError("Please Enter First Name");
                 } else if (d3.isEmpty()) {
                     lastName.setError("Please Enter Last name");
-                } else if (d4.trim().isEmpty()) {
+                } else if (d4.isEmpty()) {
                     birthDate.setError("Please enter Date of Birth");
                 } else if (checkEligibleBirthDate()) {
                     birthDate.setError("");
                     birthDate.setText("Not eligible to file tax for current year 2019".toUpperCase());
                     birthDate.setTextColor(Color.RED);
                     disableFields();
-                } else if (d6.trim().isEmpty()) {
+                } else if (d6.isEmpty()) {
                     grossIncome.setError("Please Enter Gross Income");
-                } else if (d7.trim().isEmpty()) {
+            }
+                else if (Integer.parseInt(d6 ) < 0)
+                {
+                grossIncome.setError("Please Enter Correct Gross Income");
+            }
+                else if (d7.isEmpty()) {
                     rrspContribution.setError("Please Enter RRSP contribution");
                 } else {
                     CRACustomer craCustomer = new CRACustomer(d1, d2, d3, d4, d5,
