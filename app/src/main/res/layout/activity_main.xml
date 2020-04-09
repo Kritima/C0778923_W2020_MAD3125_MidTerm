@@ -20,7 +20,7 @@
             android:fontFamily="@font/alfa_slab_one"
             android:text="CRACalculator"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="0"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
             android:id="@+id/sin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="8dp"
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -175,21 +175,21 @@
                 android:id="@+id/radioButtonMale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
+                android:buttonTint="@color/colorSplash"
                 android:text="Male" />
 
             <RadioButton
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
+                android:buttonTint="@color/colorSplash"
                 android:text="Female" />
 
             <RadioButton
                 android:id="@+id/radioButtonOther"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:buttonTint="@color/colorPrimary"
+                android:buttonTint="@color/colorSplash"
                 android:text="Other" />
         </RadioGroup>
 
