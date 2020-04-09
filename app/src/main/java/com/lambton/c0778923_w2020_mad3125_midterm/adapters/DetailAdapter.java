@@ -1,15 +1,15 @@
-package com.lambton.c0778923_w2020_mad3125_midterm;
+package com.lambton.c0778923_w2020_mad3125_midterm.adapters;
 
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.lambton.c0778923_w2020_mad3125_midterm.models.DetailList;
+import com.lambton.c0778923_w2020_mad3125_midterm.R;
 
 import java.util.ArrayList;
 

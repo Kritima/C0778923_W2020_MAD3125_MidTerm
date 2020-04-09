@@ -1,5 +1,7 @@
 package com.lambton.c0778923_w2020_mad3125_midterm.models;
 
+import com.lambton.c0778923_w2020_mad3125_midterm.utilities.Calculator;
+
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -14,12 +16,20 @@ public class CRACustomer implements Serializable {
     private double grossIncome;
     private double rrspContributed;
 
-    public String ageKey() {
-        return "Age (Year)";
+    public String sinKey() {
+        return "Person SIN Number";
+    }
+
+    public String fullNameKey() {
+        return "Full Name";
     }
 
     public String birthDateKey() {
         return "Birth Of Date";
+    }
+
+    public String ageKey() {
+        return "Age (Year)";
     }
 
     public String carryRRSPKey() {
@@ -38,10 +48,6 @@ public class CRACustomer implements Serializable {
         return "Federal tax";
     }
 
-    public String fullNameKey() {
-        return "Full Name";
-    }
-
     public String genderKey() {
         return "Gender";
     }
@@ -56,10 +62,6 @@ public class CRACustomer implements Serializable {
 
     public String rrspContributedKey() {
         return "RRSP Contributed";
-    }
-
-    public String sinKey() {
-        return "Person SIN Number";
     }
 
     public String taxDateKey() {

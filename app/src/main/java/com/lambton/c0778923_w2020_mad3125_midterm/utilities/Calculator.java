@@ -1,4 +1,4 @@
-package com.lambton.c0778923_w2020_mad3125_midterm.models;
+package com.lambton.c0778923_w2020_mad3125_midterm.utilities;
 
 import java.text.NumberFormat;
 import java.text.ParseException;

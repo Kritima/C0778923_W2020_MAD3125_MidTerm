@@ -1,4 +1,4 @@
-package com.lambton.c0778923_w2020_mad3125_midterm;
+package com.lambton.c0778923_w2020_mad3125_midterm.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,29 +6,22 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import androidx.appcompat.app.AlertDialog.Builder;
-import android.graphics.drawable.LayerDrawable;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.RatingBar;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.lambton.c0778923_w2020_mad3125_midterm.R;
 import com.lambton.c0778923_w2020_mad3125_midterm.models.CRACustomer;
-import com.lambton.c0778923_w2020_mad3125_midterm.models.Calculator;
 
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
