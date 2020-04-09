@@ -3,10 +3,12 @@ package com.lambton.c0778923_w2020_mad3125_midterm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import androidx.appcompat.app.AlertDialog.Builder;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
 import android.view.View;
@@ -20,13 +22,15 @@ import android.widget.Spinner;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.lambton.c0778923_w2020_mad3125_midterm.models.CRACustomer;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnSubmit, btnClear;
+    Button btnCalculate;
     TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution ;
     TextInputLayout sinLayout;
     RadioGroup rgGender;
@@ -52,11 +56,9 @@ public class MainActivity extends AppCompatActivity {
         rbMale = (RadioButton) findViewById(R.id.radioButtonMale);
         rbFemale = (RadioButton) findViewById(R.id.radioButtonFemale);
         rbOther = (RadioButton) findViewById(R.id.radioButtonOther);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
-        btnClear = (Button) findViewById(R.id.btnClear);
+        btnCalculate = (Button) findViewById(R.id.btnSubmit);
 
 
-        sinLayout.error = getString()
 
         birthDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,30 +89,71 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        submit.setOnClickListener(new View.OnClickListener() {
+
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 int selectedGender = rgGender.getCheckedRadioButtonId();
 
-                String n = null;
+                String d5 = null;
                 int i = 0;
                 if (selectedGender == R.id.radioButtonMale) {
-                    n = "Male";
-                } else if (selectedGender == R.id.radioButton2) {
-                    n = 2;
-                } else if (selectedGender == R.id.radioButton3) {
-                    n = 3;
+                    d5 = "Male";
+                } else if (selectedGender == R.id.radioButtonFemale) {
+                    d5 = "Female";
+                } else if (selectedGender == R.id.radioButtonOther) {
+                    d5 = "Other";
                 }
 
 
-                Complaint c = new Complaint(suffix.getSelectedItem().toString(), fullname.getText().toString(), n, designation.getSelectedItem().toString(),
-                        address.getText().toString(),
-                        province.getText().toString(), city.getText().toString(), postalCode.getText().toString(), email.getText().toString(),
-                        area.getText().toString(), phone.getText().toString(), date.getText().toString(), getIssues(), description.getText().toString(), severity.getRating());
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                intent.putExtra("sampleObject", c);
-                startActivity(intent);
+                String d1 = sin.getText().toString();
+                String d2 = firstName.getText().toString();
+                String d3 = lastName.getText().toString();
+                String d4 = birthDate.getText().toString();
+                String d6 = grossIncome.getText().toString();
+                String d7 = rrspContribution.getText().toString();
+
+                checkEligibleDob();
+
+                if (d1.length() != 9)
+                {
+                    showAlert("SIN Should be of 9 digits.");
+                }
+                else if (d2.isEmpty())
+                {
+                    showAlert("Please Enter First Name");
+                }
+                else if (d3.isEmpty())
+                {
+                    showAlert("Please Enter Last name");
+                }
+                else if (d4.trim().isEmpty())
+                {
+                    showAlert("Please enter Date of birth");
+                }
+                else if (this.birthLayout.getError() != null)
+                {
+                    showAlert(this.birthLayout.getError().toString());
+                }
+                else if (d6.trim().isEmpty())
+                {
+                    showAlert("Please Enter Gross Income");
+                }
+                else if (d7.trim().isEmpty())
+                {
+                    showAlert("Please Enter RRSP contribution");
+                }
+                else {
+                    CRACustomer cRACustomer = new CRACustomer(d1, d2, d3, d4, charSequence,
+                            Double.parseDouble(d6), Double.parseDouble(obj6));
+                    DataManager.addNewCustomer(cRACustomer);
+                    List details = DetailCustomer.getDetails(cRACustomer);
+                    Intent intent = new Intent(this, ShowDetailActivity.class);
+                    intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList) details);
+                    startActivity(intent);
+                }
+            }
 
             }
 
@@ -118,5 +161,143 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    private void showAlert(String str) {
+        Builder builder = new Builder(this);
+        builder.setTitle((CharSequence) "Alert!");
+        builder.setMessage((CharSequence) str);
+       // builder.setIcon((int) C0605R.C0607drawable.ic_action_alert);
+        builder.setPositiveButton((CharSequence) "OK", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton((CharSequence) "Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+            }
+        });
+        builder.create().show();
+    }
+
+}
+
+    private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
+    public static final String INTENT_KEY = "details";
+    private TextInputLayout birthLayout;
+    private Button btnCalculate;
+    private DatePickerDialog datePickerDialog;
+    private RadioButton genderButton;
+    private RadioGroup radioGroup;
+    private TextView txtAge;
+    /* access modifiers changed from: private */
+
+
+    private void initViews() {
+        this.txtSIN = (TextInputEditText) findViewById(C0605R.C0608id.txtSin);
+        this.txtFName = (TextInputEditText) findViewById(C0605R.C0608id.txtFName);
+        this.txtLName = (TextInputEditText) findViewById(C0605R.C0608id.txtLName);
+        this.txtBirthDate = (TextInputEditText) findViewById(C0605R.C0608id.txtBirthDate);
+        this.txtGrossIncome = (TextInputEditText) findViewById(C0605R.C0608id.txtGross);
+        this.txtRRSP = (TextInputEditText) findViewById(C0605R.C0608id.txtRRSP);
+        this.btnCalculate = (Button) findViewById(C0605R.C0608id.btnCalculate);
+        this.radioGroup = (RadioGroup) findViewById(C0605R.C0608id.radioGroup);
+        this.txtBirthDate.setInputType(0);
+        this.birthLayout = (TextInputLayout) findViewById(C0605R.C0608id.textInputLayout4);
+        this.txtAge = (TextView) findViewById(C0605R.C0608id.txtAge);
+        this.txtBirthDate.setOnFocusChangeListener(new OnFocusChangeListener() {
+            public void onFocusChange(View view, boolean z) {
+                if (z) {
+                    DetailEntryActivity.this.closeKeyboard();
+                    DetailEntryActivity.this.openDatePicker();
+                    return;
+                }
+                DetailEntryActivity.this.checkEligibleDob();
+            }
+        });
+        this.txtBirthDate.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                DetailEntryActivity.this.openDatePicker();
+            }
+        });
+        this.btnCalculate.setOnClickListener(new OnClickListener() {
+            public void onClick(View view) {
+                DetailEntryActivity.this.calculateButtonClicked();
+            }
+        });
+    }
+
+    /* access modifiers changed from: private */
+    public void openDatePicker() {
+        Calendar instance = Calendar.getInstance();
+        int i = instance.get(5);
+        int i2 = instance.get(2);
+        DatePickerDialog datePickerDialog2 = new DatePickerDialog(this, new OnDateSetListener() {
+            public void onDateSet(DatePicker datePicker, int i, int i2, int i3) {
+                Calendar instance = Calendar.getInstance();
+                instance.set(i, i2, i3);
+                DetailEntryActivity.this.txtBirthDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(instance.getTime()).toUpperCase());
+            }
+        }, instance.get(1), i2, i);
+        this.datePickerDialog = datePickerDialog2;
+        datePickerDialog2.getDatePicker().setMaxDate(new Date().getTime());
+        this.datePickerDialog.show();
+    }
+
+    /* access modifiers changed from: private */
+    public void closeKeyboard() {
+        ((InputMethodManager) getSystemService("input_method")).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 2);
+    }
+
+    /* access modifiers changed from: private */
+    public void calculateButtonClicked() {
+        String obj = this.txtSIN.getText().toString();
+        String obj2 = this.txtFName.getText().toString();
+        String obj3 = this.txtLName.getText().toString();
+        String obj4 = this.txtBirthDate.getText().toString();
+        RadioButton radioButton = (RadioButton) findViewById(this.radioGroup.getCheckedRadioButtonId());
+        this.genderButton = radioButton;
+        String charSequence = radioButton.getText().toString();
+        String obj5 = this.txtGrossIncome.getText().toString();
+        String obj6 = this.txtRRSP.getText().toString();
+        checkEligibleDob();
+        if (obj.trim().length() != 9) {
+            showAlert("SIN Should be of 9 digits.");
+        } else if (obj2.trim().isEmpty()) {
+            showAlert("Please enter First name");
+        } else if (obj3.trim().isEmpty()) {
+            showAlert("Please enter Last name");
+        } else if (obj4.trim().isEmpty()) {
+            showAlert("Please enter Date of birth");
+        } else if (this.birthLayout.getError() != null) {
+            showAlert(this.birthLayout.getError().toString());
+        } else if (obj5.trim().isEmpty()) {
+            showAlert("Please enter Gross Income");
+        } else if (obj6.trim().isEmpty()) {
+            showAlert("Please enter RRSP contribution");
+        } else {
+            CRACustomer cRACustomer = new CRACustomer(obj, obj2, obj3, obj4, charSequence, Double.parseDouble(obj5), Double.parseDouble(obj6));
+            DataManager.addNewCustomer(cRACustomer);
+            List details = DetailCustomer.getDetails(cRACustomer);
+            Intent intent = new Intent(this, ShowDetailActivity.class);
+            intent.putParcelableArrayListExtra(INTENT_KEY, (ArrayList) details);
+            startActivity(intent);
+        }
+    }
+
+    /* access modifiers changed from: private */
+    public void checkEligibleDob() {
+        int parseInt = Integer.parseInt(TaxCalculator.getAge(this.txtBirthDate.getText().toString()));
+        TextView textView = this.txtAge;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Age: ");
+        sb.append(parseInt);
+        textView.setText(sb.toString());
+        if (parseInt < 18) {
+            this.birthLayout.setError(ERROR_MESSAGE.toUpperCase());
+        } else {
+            this.birthLayout.setError(null);
+        }
+    }
+
 
 }

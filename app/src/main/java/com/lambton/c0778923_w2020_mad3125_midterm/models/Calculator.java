@@ -56,7 +56,7 @@ public class Calculator {
 
         public static double calculateProvinceTax(double a) {
             double a2;
-            double a3;
+            double a3 = 1;
             double a4 = 0.0d;
             if (a > 10582.0d)
             {
@@ -93,8 +93,7 @@ public class Calculator {
                             a3 = 11.16d;
                         }
                     }
-                    else
-                        {
+                    else {
                         a3 = 9.15d;
                     }
                     a2 = a7 * a3;
