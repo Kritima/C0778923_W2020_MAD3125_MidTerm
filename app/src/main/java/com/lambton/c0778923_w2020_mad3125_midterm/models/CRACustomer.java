@@ -95,7 +95,12 @@ public class CRACustomer {
         return sb.toString();
     }
 
-    
+    public String getDob() {
+        return dob;
+    }
+
+   
+
     }
 
 
