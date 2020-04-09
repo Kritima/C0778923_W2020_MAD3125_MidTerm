@@ -115,8 +115,9 @@ public class CRACustomer {
         return Calculator.getAge(this.dob);
     }
 
-
-
+    public String taxFilingDate() {
+        return new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime()).toUpperCase();
+    }
 
 
 }
