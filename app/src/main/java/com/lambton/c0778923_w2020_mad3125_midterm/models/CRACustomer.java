@@ -87,7 +87,15 @@ public class CRACustomer {
             return sin;
         }
 
-        
+    public String fullName() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(lName.toUpperCase());
+        sb.append(", ");
+        sb.append(fName.toLowerCase());
+        return sb.toString();
+    }
+
+    
     }
 
 
