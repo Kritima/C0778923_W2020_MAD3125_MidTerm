@@ -12,7 +12,6 @@ An app that calculates the tax for the customer. The customer enters his/her ask
 Screenshot | Description
 --- | ---
 ![Demo Doccou alpha](https://j.gifs.com/r8nlY2.gif) | Login screen for the app. Added validations. Added toggle hide password. Added Remember me. 'Sign up' button goes to add customer view controller.
-<iframe src='//gifs.com/embed/detailscreen-r8nlY2' frameborder='0' scrolling='no' width='678px' height='1356px' style='-webkit-backface-visibility: hidden;-webkit-transform: scale(1);' ></iframe>" alt="customerScreen"/> | List of customers. Logout button and new customer button added.
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/custom10.jpg" alt="customerDetailsScreen"/> | Detailed view of a single customer. Clicking on a bill moves to a detailed view of the bill. New bill button move to a screen to add a new bill.
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/billde10.png" alt="BillScreen"/> | View of bill. Contains bill amounts. 
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/newbil10.png" alt="newBillScreen"/> | Adding a new bill. Date Picker for the date. Add necessary and removes unncessary text fields when bill type is selected.
