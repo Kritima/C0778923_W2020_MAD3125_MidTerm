@@ -14,6 +14,9 @@ public class Calculator {
         private static final double MAX_CPP_AMOUNT = 57400.0d;
         private static final double MAX_EI_AMOUNT = 53100.0d;
 
+    private Calculator() {
+    }
+
         public static double calculateCPP(double a) {
             if (a > MAX_CPP_AMOUNT) {
                 return DEFAULT_CPP_AMOUNT;
@@ -25,25 +28,7 @@ public class Calculator {
             }
         }
 
-        private Calculator() {
-        }
 
-        public static String getAge(String str) {
-            Date date;
-            try {
-                date = new SimpleDateFormat("dd-MMM-yyyy").parse(str);
-            } catch (ParseException e) {
-                e.printStackTrace();
-                date = null;
-            }
-            if (date == null) {
-                return "5";
-            }
-            Calendar instance = Calendar.getInstance();
-            Calendar instance2 = Calendar.getInstance();
-            instance.setTime(date);
-            return String.valueOf(instance2.get(Calendar.YEAR) - instance.get(Calendar.YEAR));
-        }
 
         public static double calculateEI(double a) {
             if (a > MAX_EI_AMOUNT) {
@@ -162,19 +147,28 @@ public class Calculator {
             return ((double) Math.round(a3 * 100.0d)) / 100.0d;
         }
 
+    public static String getAge(String str) {
+        Date date;
+        try {
+            date = new SimpleDateFormat("dd-MMM-yyyy").parse(str);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            date = null;
+        }
+        if (date == null) {
+            return "5";
+        }
+        Calendar instance = Calendar.getInstance();
+        Calendar instance2 = Calendar.getInstance();
+        instance.setTime(date);
+        return String.valueOf(instance2.get(Calendar.YEAR) - instance.get(Calendar.YEAR));
+    }
+
         public static String getFormattedCurrency(double c) {
             NumberFormat currencyInstance = NumberFormat.getCurrencyInstance(Locale.getDefault());
             currencyInstance.setMinimumFractionDigits(2);
             return currencyInstance.format(c);
         }
 
-    public static Date getFormattedDate(String c) throws ParseException {
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-
-        String dateString = format.format( c);
-        Date   date       = format.parse ( dateString );
-        return date;
-    }
 
 }

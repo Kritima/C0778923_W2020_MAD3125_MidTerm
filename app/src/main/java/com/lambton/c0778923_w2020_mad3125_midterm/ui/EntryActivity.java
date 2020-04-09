@@ -10,6 +10,7 @@ import android.content.Intent;
 import androidx.appcompat.app.AlertDialog.Builder;
 
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -60,13 +61,33 @@ public class EntryActivity extends AppCompatActivity {
 
 
         birthDate.setOnClickListener(new View.OnClickListener() {
-                                         @Override
-                                         public void onClick(View view) {
+            @Override
+            public void onClick(View view) {
 
-                                             EntryActivity.this.openDatePicker();
-                                         }
-                                     });
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
 
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EntryActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year, month, day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                Calendar cal = Calendar.getInstance();
+                cal.set(year, month, day);
+                birthDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(cal.getTime()).toUpperCase());
+            }
+        };
 
 
         btnCalculate.setOnClickListener(new View.OnClickListener() {
@@ -100,15 +121,12 @@ public class EntryActivity extends AppCompatActivity {
                     lastName.setError("Please Enter Last name");
                 } else if (d4.trim().isEmpty()) {
                     birthDate.setError("Please enter Date of Birth");
-                }
-                else if (checkEligibleBirthDate())
-                 {
-                 birthDate.setError("");
-                 birthDate.setText("Not eligible to file tax for current year 2019".toUpperCase());
-                 birthDate.setTextColor(Color.RED);
-                 disableFields();
-                 }
-                else if (d6.trim().isEmpty()) {
+                } else if (checkEligibleBirthDate()) {
+                    birthDate.setError("");
+                    birthDate.setText("Not eligible to file tax for current year 2019".toUpperCase());
+                    birthDate.setTextColor(Color.RED);
+                    disableFields();
+                } else if (d6.trim().isEmpty()) {
                     grossIncome.setError("Please Enter Gross Income");
                 } else if (d7.trim().isEmpty()) {
                     rrspContribution.setError("Please Enter RRSP contribution");
@@ -126,32 +144,15 @@ public class EntryActivity extends AppCompatActivity {
 
     }
 
-        public void openDatePicker() {
-            Calendar instance = Calendar.getInstance();
-            int month = instance.get(Calendar.DAY_OF_MONTH);
-            int i2 = instance.get(Calendar.MONTH);
-            DatePickerDialog datePickerDialog2 = new DatePickerDialog(this, new OnDateSetListener() {
-                public void onDateSet(DatePicker datePicker, int i, int i2, int month) {
-                    Calendar instance = Calendar.getInstance();
-                    instance.set(i, i2, month);
-                    EntryActivity.this.birthDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(instance.getTime()).toUpperCase());
-                }
-            }, instance.get(Calendar.YEAR), i2, month);
-            this.datePickerDialog = datePickerDialog2;
-            datePickerDialog2.getDatePicker().setMaxDate(new Date().getTime());
-            this.datePickerDialog.show();
-        }
-
     public boolean checkEligibleBirthDate() {
         int parseInt = Integer.parseInt(Calculator.getAge(this.birthDate.getText().toString()));
         if (parseInt < 18) {
             return true;
         }
-        return true;
+        return false;
     }
 
-    private void disableFields ()
-    {
+    private void disableFields() {
         btnCalculate.setVisibility(View.GONE);
         sin.setEnabled(false);
         firstName.setEnabled(false);
@@ -164,7 +165,6 @@ public class EntryActivity extends AppCompatActivity {
         grossIncome.setEnabled(false);
         rrspContribution.setEnabled(false);
     }
-
 
 
 }

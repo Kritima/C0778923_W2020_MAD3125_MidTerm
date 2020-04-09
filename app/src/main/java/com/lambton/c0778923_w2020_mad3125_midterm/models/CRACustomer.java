@@ -94,7 +94,7 @@ public class CRACustomer implements Serializable {
         StringBuilder sb = new StringBuilder();
         sb.append(lName.toUpperCase());
         sb.append(", ");
-        sb.append(fName.toLowerCase());
+        sb.append(fName.substring(0,1).toUpperCase() + fName.substring(1));
         return sb.toString();
     }
 
