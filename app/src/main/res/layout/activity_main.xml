@@ -279,6 +279,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rrspContributed">
 
+
             <Button
                 android:id="@+id/btnSubmit"
                 style=" @style/Widget.MaterialComponents.Button"
@@ -287,8 +288,6 @@
                 android:text="Calculate" />
 
         </LinearLayout>
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

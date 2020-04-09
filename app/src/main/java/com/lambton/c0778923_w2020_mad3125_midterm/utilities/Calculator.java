@@ -42,7 +42,7 @@ public class Calculator {
             Calendar instance = Calendar.getInstance();
             Calendar instance2 = Calendar.getInstance();
             instance.setTime(date);
-            return String.valueOf(instance2.get(1) - instance.get(1));
+            return String.valueOf(instance2.get(Calendar.YEAR) - instance.get(Calendar.YEAR));
         }
 
         public static double calculateEI(double a) {
@@ -64,7 +64,9 @@ public class Calculator {
                 if (a5 > 43906.0d)
                 {
                     double a6 = 1682.86d;
+
                     double a7 = a5 - 33323.99d;
+
                     if (a7 > 87813.0d)
                     {
                         a6 = 5700.349999999999d;
