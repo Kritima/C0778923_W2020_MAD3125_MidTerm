@@ -6,7 +6,7 @@
 Kritima Kukreja (C0778923)
 
 ## PROJECT DESCRIPTION
-[![Demo Doccou alpha](http://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ek1j272iAmc)
+[![Demo Doccou alpha](http://share.gifyoutube.com/KzB6Gb.gif)]
 An app that calculates the total bills of a customer. A bill could be for the internet, hydro or mobile usage. A customer may have multiple bills. Implement proper login/logout, display a list of customers, add new customers, data access and storage with singleton class, validations, display errors and alerts, display basic customer information. Adding additional bills. Picker/Segment view for bill types. Proper total calculation, proper validations.
 
 ## PROJECT OUTPUT
