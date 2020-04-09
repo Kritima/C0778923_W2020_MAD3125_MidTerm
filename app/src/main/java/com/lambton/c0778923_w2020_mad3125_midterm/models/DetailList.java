@@ -1,8 +1,21 @@
 package com.lambton.c0778923_w2020_mad3125_midterm.models;
 
-import java.io.Serializable;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-public class DetailList implements Serializable {
+
+
+public class DetailList  implements Parcelable {
+
+    public static final Creator<DetailList> CREATOR = new Creator<DetailList>() {
+        public DetailList createFromParcel(Parcel parcel) {
+            return new DetailList(parcel);
+        }
+
+        public DetailList[] newArray(int i) {
+            return new DetailList[i];
+        }
+    };
 
     private String name;
     private String value;
@@ -10,6 +23,11 @@ public class DetailList implements Serializable {
     public DetailList(String name, String value) {
         this.name = name;
         this.value = value;
+    }
+
+    protected DetailList(Parcel parcel) {
+        this.name = parcel.readString();
+        this.value = parcel.readString();
     }
 
     public String getName() {
@@ -28,11 +46,18 @@ public class DetailList implements Serializable {
         this.value = value;
     }
 
+
+
     @Override
-    public String toString() {
-        return "DetailList{" +
-                "name='" + name + '\'' +
-                ", value='" + value + '\'' +
-                '}';
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
+        dest.writeString(this.name);
+        dest.writeString(this.value);
+
     }
 }

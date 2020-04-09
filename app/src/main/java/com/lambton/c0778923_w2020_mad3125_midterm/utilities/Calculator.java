@@ -37,7 +37,7 @@ public class Calculator {
                 date = null;
             }
             if (date == null) {
-                return "0";
+                return "5";
             }
             Calendar instance = Calendar.getInstance();
             Calendar instance2 = Calendar.getInstance();
@@ -165,5 +165,14 @@ public class Calculator {
             currencyInstance.setMinimumFractionDigits(2);
             return currencyInstance.format(c);
         }
-        
+
+    public static Date getFormattedDate(String c) throws ParseException {
+
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+
+        String dateString = format.format( c);
+        Date   date       = format.parse ( dateString );
+        return date;
+    }
+
 }

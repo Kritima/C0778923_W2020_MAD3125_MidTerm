@@ -39,13 +39,14 @@ public class DetailsActivity extends AppCompatActivity {
     private void populateList() {
         detailListArrayList = new ArrayList<>();
         Intent i = getIntent();
-        CRACustomer c = (CRACustomer) i.getSerializableExtra("sampleObject");
+        CRACustomer c = (CRACustomer) i.getSerializableExtra("details");
 
         detailListArrayList.add(new DetailList(c.sinKey(),c.getSin() ));
         detailListArrayList.add(new DetailList(c.fullNameKey(),c.fullName()));
         detailListArrayList.add(new DetailList(c.birthDateKey(),c.getDob()));
         detailListArrayList.add(new DetailList(c.genderKey(),c.getGender()));
         detailListArrayList.add(new DetailList(c.ageKey(),c.getAge()));
+        detailListArrayList.add(new DetailList(c.taxFilingDateKey(),c.taxFilingDate()));
         detailListArrayList.add(new DetailList(c.grossIncomeKey(),Calculator.getFormattedCurrency(c.getGrossIncome())));
         detailListArrayList.add(new DetailList(c.federalKey(),Calculator.getFormattedCurrency(c.getFedralTax())));
         detailListArrayList.add(new DetailList(c.provinceKey(),Calculator.getFormattedCurrency(c.getProviceTax())));

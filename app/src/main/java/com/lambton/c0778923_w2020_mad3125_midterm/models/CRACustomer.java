@@ -111,11 +111,11 @@ public class CRACustomer implements Serializable {
     }
 
     public double getRrspContributed() {
-        return this.rrspContributed;
+        return rrspContributed;
     }
 
     public String getAge() {
-        return Calculator.getAge(this.dob);
+        return Calculator.getAge(dob);
     }
 
     public String taxFilingDate() {

@@ -26,7 +26,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
+public class EntryActivity extends AppCompatActivity {
 
     Button btnCalculate;
     TextInputEditText firstName, lastName, sin, birthDate, grossIncome, rrspContribution;
@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                 int day = cal.get(Calendar.DAY_OF_MONTH);
 
                 DatePickerDialog dialog = new DatePickerDialog(
-                        MainActivity.this,
+                        EntryActivity.this,
                         android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
                         year, month, day);
@@ -82,9 +82,11 @@ public class MainActivity extends AppCompatActivity {
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 Calendar cal = Calendar.getInstance();
                 month = month + 1;
-                String date1 = month + "/" + day + "/" + year;
-                    birthDate.setText(new SimpleDateFormat("dd-MMM-yyyy").format(cal.getTime()).toUpperCase());
-                }
+                String date1 = day + "-" + month + "-" + year;
+
+                    birthDate.setText(date1);
+
+            }
         };
 
 
@@ -134,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
                         } else {
                             CRACustomer craCustomer = new CRACustomer(d1, d2, d3, d4, d5,
                                     Double.parseDouble(d6), Double.parseDouble(d7));
-                            Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
-                            intent.putExtra("sampleObject", craCustomer);
+                            Intent intent = new Intent(EntryActivity.this, DetailsActivity.class);
+                            intent.putExtra("details", craCustomer);
                             startActivity(intent);
 
                         }
@@ -179,14 +181,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
    /* private static final String ERROR_MESSAGE = "Not eligible to file tax for current year 2019";
-    public static final String INTENT_KEY = "details";
-    private TextInputLayout birthLayout;
-    private Button btnCalculate;
-    private DatePickerDialog datePickerDialog;
-    private RadioButton genderButton;
-    private RadioGroup radioGroup;
-    private TextView txtAge;
-    /* access modifiers changed from: private */
+
+
 
 
    /* private void initViews() {
@@ -238,14 +234,11 @@ public class MainActivity extends AppCompatActivity {
         this.datePickerDialog = datePickerDialog2;
         datePickerDialog2.getDatePicker().setMaxDate(new Date().getTime());
         this.datePickerDialog.show();
-    }
-
-    /* access modifiers changed from: private */
-   /* public void closeKeyboard() {
-        ((InputMethodManager) getSystemService("input_method")).hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 2);
-    }
+    }*/
 
 
-    /* access modifiers changed from: private */
+
+
+
 
 
