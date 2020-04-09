@@ -1,21 +1,27 @@
 package com.lambton.c0778923_w2020_mad3125_midterm.adapters;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.internal.view.SupportMenu;
+import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.lambton.c0778923_w2020_mad3125_midterm.models.CRACustomer;
 import com.lambton.c0778923_w2020_mad3125_midterm.models.DetailList;
 import com.lambton.c0778923_w2020_mad3125_midterm.R;
+import com.lambton.c0778923_w2020_mad3125_midterm.utilities.Calculator;
 
 import java.util.ArrayList;
 
 public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailViewHolder> {
 
         private ArrayList<DetailList> detailListArrayList;
+        CRACustomer craCustomer;
 
         public DetailAdapter(ArrayList<DetailList> detailListArrayList)
         {
@@ -36,23 +42,24 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
         public void onBindViewHolder(@NonNull final DetailViewHolder holder, final int position) {
 
             DetailList detailList = this.detailListArrayList.get(position);
-            holder.txtName.setText(detailList.getName());
-            holder.txtValue.setText(detailList.getValue());
-
-            /*holder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    DetailList dl = detailListArrayList.get(position);
-                    Intent intent = new Intent(holder.itemView.getContext(), AttractionDetailsActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("attractionsKey", ca);
-                    intent.putExtras(bundle);
-                    holder.itemView.getContext().startActivity(intent);
-
+                holder.txtName.setText(detailList.getName());
+                if (detailList.getName().toLowerCase().equalsIgnoreCase("Carry forward RRSP")) {
+                    double parseDouble = Double.parseDouble(detailList.getValue());
+                    if (parseDouble < 0.0d) {
+                        holder.txtValue.setText(Calculator.getFormattedCurrency(parseDouble));
+                        holder.txtValue.setTextColor(Color.RED);
+                    }
+                    else
+                    {
+                        holder.txtValue.setText(Calculator.getFormattedCurrency(parseDouble));
+                    }
                 }
-            });*/
+                else
+                {
+                    holder.txtValue.setText((detailList.getValue()));
+                }
+            }
 
-        }
 
         @Override
         public int getItemCount() {

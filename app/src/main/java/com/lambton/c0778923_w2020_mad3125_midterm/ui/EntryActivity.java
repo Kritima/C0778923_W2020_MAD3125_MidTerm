@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -148,7 +149,7 @@ public class EntryActivity extends AppCompatActivity {
             }
 
         /*public void checkEligibleDob () {
-            int parseInt = Integer.parseInt(Calculator.getAge(this.txtBirthDate.getText().toString()));
+            int parseInt = Integer.parseInt(Calculator.getAge(this.birthDate.getText().toString()));
             TextView textView = this.txtAge;
             StringBuilder sb = new StringBuilder();
             sb.append("Age: ");

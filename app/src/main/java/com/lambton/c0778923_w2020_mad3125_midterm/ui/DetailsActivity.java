@@ -53,7 +53,7 @@ public class DetailsActivity extends AppCompatActivity {
         detailListArrayList.add(new DetailList(c.cppKey(), Calculator.getFormattedCurrency((c.getCPP()))));
         detailListArrayList.add(new DetailList(c.eiKey(), Calculator.getFormattedCurrency((c.getEI()))));
         detailListArrayList.add(new DetailList(c.rrspContributedKey(), Calculator.getFormattedCurrency((c.getRrspContributed()))));
-        detailListArrayList.add(new DetailList(c.carryRRSPKey(), Calculator.getFormattedCurrency((c.getRemainingRSSP()))));
+        detailListArrayList.add(new DetailList(c.carryRRSPKey(), String.valueOf(c.getRemainingRSSP())));
         detailListArrayList.add(new DetailList(c.totalPayableTaxKey(), Calculator.getFormattedCurrency((c.getTotalTaxableAmount()))));
         detailListArrayList.add(new DetailList(c.totalPaidTaxKey(), Calculator.getFormattedCurrency((c.getTotalTax()))));
     }
