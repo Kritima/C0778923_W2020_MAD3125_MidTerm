@@ -44,9 +44,10 @@ public class DetailsActivity extends AppCompatActivity {
         detailListArrayList.add(new DetailList(c.sinKey(),c.getSin() ));
         detailListArrayList.add(new DetailList(c.fullNameKey(),c.fullName()));
         detailListArrayList.add(new DetailList(c.birthDateKey(),c.getDob()));
-        detailListArrayList.add(new DetailList(c.ageKey(),c.getAge()));
         detailListArrayList.add(new DetailList(c.genderKey(),c.getGender()));
-        detailListArrayList.add(new DetailList(c.fedralKey(),Calculator.getFormattedCurrency(c.getFedralTax())));
+        detailListArrayList.add(new DetailList(c.ageKey(),c.getAge()));
+        detailListArrayList.add(new DetailList(c.grossIncomeKey(),Calculator.getFormattedCurrency(c.getGrossIncome())));
+        detailListArrayList.add(new DetailList(c.federalKey(),Calculator.getFormattedCurrency(c.getFedralTax())));
         detailListArrayList.add(new DetailList(c.provinceKey(),Calculator.getFormattedCurrency(c.getProviceTax())));
         detailListArrayList.add(new DetailList(c.cppKey(), Calculator.getFormattedCurrency((c.getCPP()))));
         detailListArrayList.add(new DetailList(c.eiKey(), Calculator.getFormattedCurrency((c.getEI()))));

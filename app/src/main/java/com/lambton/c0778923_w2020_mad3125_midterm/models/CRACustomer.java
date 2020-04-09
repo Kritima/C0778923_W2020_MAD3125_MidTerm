@@ -44,7 +44,7 @@ public class CRACustomer implements Serializable {
         return "EI";
     }
 
-    public String fedralKey() {
+    public String federalKey() {
         return "Federal tax";
     }
 
@@ -52,7 +52,7 @@ public class CRACustomer implements Serializable {
         return "Gender";
     }
 
-    public String incomeKey() {
+    public String grossIncomeKey() {
         return "Gross income";
     }
 
@@ -64,7 +64,7 @@ public class CRACustomer implements Serializable {
         return "RRSP Contributed";
     }
 
-    public String taxDateKey() {
+    public String taxFilingDateKey() {
         return "Tax Filing date";
     }
 

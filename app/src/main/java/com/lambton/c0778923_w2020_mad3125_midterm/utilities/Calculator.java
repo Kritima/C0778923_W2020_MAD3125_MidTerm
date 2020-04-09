@@ -165,4 +165,5 @@ public class Calculator {
             currencyInstance.setMinimumFractionDigits(2);
             return currencyInstance.format(c);
         }
-    }
+        
+}
