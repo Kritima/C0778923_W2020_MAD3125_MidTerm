@@ -87,75 +87,7 @@ public class CRACustomer {
             return sin;
         }
 
-        public String fullName() {
-            StringBuilder sb = new StringBuilder();
-            sb.append(lName.toUpperCase());
-            sb.append(", ");
-            sb.append(fName.toLowerCase());
-            return sb.toString();
-        }
-
-        public String getDob() {
-            return dob;
-        }
-
-        public String getGender() {
-            return this.gender;
-        }
-
-        public double getGrossIncome() {
-            return this.grossIncome;
-        }
-
-        public double getRrspContributed() {
-            return this.rrspContributed;
-        }
-
-        public String getAge() {
-            return TaxCalculator.getAge(this.dob);
-        }
-
-        public String taxFilingDate() {
-            return new SimpleDateFormat("dd-MMM-yyyy").format(Calendar.getInstance().getTime()).toUpperCase();
-        }
-
-        public double getCPP() {
-            return Calculator.calculateCPP(getGrossIncome());
-        }
-
-        public double getEI() {
-            return TaxCalculator.performEI(getGrossIncome());
-        }
-
-        public double getRemainingRSSP() {
-            return getMaxRRSP() - getRrspContributed();
-        }
-
-        public double getTotalTaxableAmount() {
-            double cpp = getCPP();
-            double ei = getEI();
-            double rrspContributed2 = getRrspContributed();
-            if (rrspContributed2 > getMaxRRSP()) {
-                rrspContributed2 = getMaxRRSP();
-            }
-            return ((double) Math.round((getGrossIncome() - ((cpp + ei) + rrspContributed2)) * 100.0d)) / 100.0d;
-        }
-
-        public double getProviceTax() {
-            return TaxCalculator.performProvinceTax(getTotalTaxableAmount());
-        }
-
-        public double getFedralTax() {
-            return TaxCalculator.performFedralTax(getTotalTaxableAmount());
-        }
-
-        public double getTotalTax() {
-            return ((double) Math.round((getProviceTax() + getFedralTax()) * 100.0d)) / 100.0d;
-        }
-
-        public double getMaxRRSP() {
-            return (this.grossIncome * 18.0d) / 100.0d;
-        }
+        
     }
 
 
