@@ -95,11 +95,11 @@ public class EntryActivity extends AppCompatActivity {
                 if (d1.length() != 9) {
                     sin.setError("SIN Should be of 9 digits.");
                 } else if (d2.isEmpty()) {
-                    showAlert("Please Enter First Name");
+                    firstName.setError("Please Enter First Name");
                 } else if (d3.isEmpty()) {
-                    showAlert("Please Enter Last name");
+                    lastName.setError("Please Enter Last name");
                 } else if (d4.trim().isEmpty()) {
-                    showAlert("Please enter Date of birth");
+                    birthDate.setError("Please enter Date of Birth");
                 }
                 else if (checkEligibleBirthDate())
                  {
@@ -109,9 +109,9 @@ public class EntryActivity extends AppCompatActivity {
                  disableFields();
                  }
                 else if (d6.trim().isEmpty()) {
-                    showAlert("Please Enter Gross Income");
+                    grossIncome.setError("Please Enter Gross Income");
                 } else if (d7.trim().isEmpty()) {
-                    showAlert("Please Enter RRSP contribution");
+                    rrspContribution.setError("Please Enter RRSP contribution");
                 } else {
                     CRACustomer craCustomer = new CRACustomer(d1, d2, d3, d4, d5,
                             Double.parseDouble(d6), Double.parseDouble(d7));
@@ -150,23 +150,6 @@ public class EntryActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showAlert(String str) {
-        Builder builder = new Builder(this);
-        builder.setTitle((CharSequence) "Alert!");
-        builder.setMessage((CharSequence) str);
-        // builder.setIcon((int) C0605R.C0607drawable.ic_action_alert);
-        builder.setPositiveButton((CharSequence) "OK", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        builder.setNegativeButton((CharSequence) "Cancel", (DialogInterface.OnClickListener) new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialogInterface, int i) {
-            }
-        });
-        builder.create().show();
-    }
-
     private void disableFields ()
     {
         btnCalculate.setVisibility(View.GONE);
@@ -175,6 +158,9 @@ public class EntryActivity extends AppCompatActivity {
         lastName.setEnabled(false);
         birthDate.setEnabled(false);
         rgGender.setEnabled(false);
+        rbFemale.setEnabled(false);
+        rbMale.setEnabled(false);
+        rbOther.setEnabled(false);
         grossIncome.setEnabled(false);
         rrspContribution.setEnabled(false);
     }

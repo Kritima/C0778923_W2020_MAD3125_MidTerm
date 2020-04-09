@@ -1,5 +1,6 @@
 package com.lambton.c0778923_w2020_mad3125_midterm.ui;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -17,6 +18,8 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
