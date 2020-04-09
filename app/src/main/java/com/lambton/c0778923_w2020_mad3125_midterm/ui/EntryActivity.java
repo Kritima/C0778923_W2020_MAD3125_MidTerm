@@ -3,11 +3,8 @@ package com.lambton.c0778923_w2020_mad3125_midterm.ui;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
-import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
 
-import androidx.appcompat.app.AlertDialog.Builder;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,7 +23,6 @@ import com.lambton.c0778923_w2020_mad3125_midterm.utilities.Calculator;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 public class EntryActivity extends AppCompatActivity {
 
