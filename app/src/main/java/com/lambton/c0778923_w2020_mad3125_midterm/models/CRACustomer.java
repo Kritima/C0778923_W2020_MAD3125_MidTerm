@@ -99,7 +99,10 @@ public class CRACustomer {
         return dob;
     }
 
-   
+    public String getGender() {
+        return gender;
+    }
+
 
     }
 
