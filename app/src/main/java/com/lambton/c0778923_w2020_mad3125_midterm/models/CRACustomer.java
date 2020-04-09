@@ -111,7 +111,11 @@ public class CRACustomer {
         return this.rrspContributed;
     }
 
-    
+    public String getAge() {
+        return Calculator.getAge(this.dob);
+    }
+
+
 
 
 
