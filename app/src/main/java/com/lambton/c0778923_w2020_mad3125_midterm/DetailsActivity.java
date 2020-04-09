@@ -15,7 +15,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private RecyclerView rvDetailsList;
     private ArrayList<DetailList> detailListArrayList;
-    private ;
+    private DetailAdapter detailAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
