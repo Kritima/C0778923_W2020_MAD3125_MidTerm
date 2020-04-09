@@ -3,7 +3,7 @@
 
 ## PROJECT CONTRIBUTORS
 
-Kritima Kukreja (C0778923)
+Kritima Kukreja
 
 ## PROJECT DESCRIPTION
 An app that calculates the tax for the customer. The customer enters his/her asked deatils. Proper tax calculations, proper validations are done. Displays basic customer information and tax related information on a new screen. Date Picker for birth date.
