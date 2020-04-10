@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.internal.view.SupportMenu;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lambton.c0778923_w2020_mad3125_midterm.models.CRACustomer;
@@ -74,7 +72,7 @@ public class DetailAdapter extends RecyclerView.Adapter<DetailAdapter.DetailView
             public DetailViewHolder(@NonNull View itemView) {
                 super(itemView);
 
-                this.txtName = (TextView) itemView.findViewById(R.id.txtKey);
+                this.txtName = (TextView) itemView.findViewById(R.id.txtName);
                 this.txtValue = (TextView) itemView.findViewById(R.id.txtValue);
 
             }
