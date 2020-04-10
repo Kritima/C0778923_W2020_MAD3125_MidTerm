@@ -12,7 +12,7 @@ An app that calculates the tax for the customer. The customer enters his/her ask
 Screenshot | Description
 --- | ---
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/splash10.png" alt="splashScreen"/> | Splash Screen for the app.
-![Demo Doccou alpha](https://j.gifs.com/r8nlY2.gif) | Enter details screen for the app. 
+![Demo Doccou alpha](https://j.gifs.com/r8nlY2.gif) | Person information entry screen for the app. 
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/datepi11.png" alt="datePicke"/> | Date Picker for birth date.
 <img src="https://i.servimg.com/u/f93/18/45/29/87/errors10.png" alt="errorScreen"/> | Errors 
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/button10.png" alt="disableButton"/> | If person's age is less than 18 then message gets displayed. Along with disabling button and other fields.
