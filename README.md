@@ -16,5 +16,5 @@ Screenshot | Description
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/datepi11.png" alt="datePicke"/> | Date Picker for birth date.
 <img src="https://i.servimg.com/u/f93/18/45/29/87/errors10.png" alt="errorScreen"/> | Errors 
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/button10.png" alt="disableButton"/> | If person's age is less than 18 then message gets displayed. Along with disabling button and other fields.
-![demo](https://j.gifs.com/yoxv2P.gif) | Details screen for the app. 
+<img src="https://i93.servimg.com/u/f93/18/45/29/87/detail18.png" alt="DeatailsScreen"/> | Details screen for the app. 
 <img src="https://i93.servimg.com/u/f93/18/45/29/87/carryf10.png" alt="updatedScreen"/> | Carry Forward RRSP in Red bold colour if its negative
